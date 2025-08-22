@@ -20,7 +20,6 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(url: "https://github.com/google/GoogleSignIn-iOS", exact: "9.0.0"),
     .package(url: "https://github.com/stasel/WebRTC", exact: "139.0.0"),
   ],
   targets: [
@@ -40,14 +39,6 @@ let package = Package(
       name: "BibiCamUI",
       dependencies: [
         "SmartDeviceManagement",
-        .product(
-          name: "GoogleSignIn",
-          package: "GoogleSignIn-iOS"
-        ),
-        .product(
-          name: "GoogleSignInSwift",
-          package: "GoogleSignIn-iOS"
-        ),
         .product(name: "WebRTC", package: "WebRTC"),
       ]
     ),

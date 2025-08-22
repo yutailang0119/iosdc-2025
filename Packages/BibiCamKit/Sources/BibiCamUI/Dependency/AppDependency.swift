@@ -1,5 +1,4 @@
 import Foundation
-import GoogleSignIn
 import HTTPKit
 import SmartDeviceManagement
 import SwiftUI
@@ -7,17 +6,7 @@ import SwiftUI
 struct AppDependency {
   var smartDeviceManagement: (any APIClient)? {
     get async {
-      do {
-        let user = try await GIDSignIn.sharedInstance.restorePreviousSignIn()
-        guard user.accessToken.expirationDate.map({ $0 > Date() }) ?? false,
-          user.grantedScopes?.contains(GIDSignIn.scopes) ?? false
-        else {
-          return nil
-        }
-        return SmartDeviceManagementAPI(token: user.accessToken.tokenString)
-      } catch {
-        return nil
-      }
+      SmartDeviceManagementAPI(token: "")
     }
   }
 }

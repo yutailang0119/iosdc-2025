@@ -19,38 +19,12 @@ private extension RootScreen {
 
     var body: some View {
       DependencyProvider { dependency in
-        Screen(phase) { _ in
-          NavigationSplitView {
-            DevicesScreen()
-              .toolbar {
-                ToolbarItem {
-                  Menu {
-                    SignOutButton {
-                      phase = .empty
-                    }
-                  } label: {
-                    Label("Menu", symbol: .ellipsis)
-                  }
-                }
-              }
-          } detail: {
-            EmptyView()
-          }
-        } empty: {
-          SignInButton { _ in
-            phase = .loaded(())
-          }
-          .frame(maxWidth: 440)
-          .padding()
-        }
-        .task {
-          let smartDeviceManagement = await dependency.smartDeviceManagement
-          if smartDeviceManagement != nil {
-            self.phase = .loaded(())
-          } else {
-            self.phase = .empty
-          }
-        }
+        WebRTCScreen(
+          state: WebRTCScreen.ViewState(
+            dependency: dependency,
+            deviceId: ""
+          )
+        )
       }
     }
   }

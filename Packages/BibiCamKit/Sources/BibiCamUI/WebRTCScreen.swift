@@ -45,6 +45,7 @@ struct WebRTCScreen: View {
 }
 
 extension WebRTCScreen {
+  #if canImport(UIKit)
   struct VideoView: UIViewRepresentable {
     let videoTrack: RTCVideoTrack
 
@@ -58,6 +59,20 @@ extension WebRTCScreen {
       videoTrack.add(uiView)
     }
   }
+  #elseif canImport(AppKit)
+  struct VideoView: NSViewRepresentable {
+    let videoTrack: RTCVideoTrack
+
+    func makeNSView(context: Context) -> RTCMTLNSVideoView {
+      let view = RTCMTLNSVideoView()
+      return view
+    }
+
+    func updateNSView(_ nsView: RTCMTLNSVideoView, context: Context) {
+      videoTrack.add(nsView)
+    }
+  }
+  #endif
 }
 
 extension WebRTCScreen {
