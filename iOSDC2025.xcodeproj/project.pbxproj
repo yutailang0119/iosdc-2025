@@ -3,41 +3,44 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21C3C004D4FF0ED14AF3D429 /* SlideConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577591A97478600D594CF9ED /* SlideConfiguration.swift */; };
-		4B199F8194D60EE3FE7A29DD /* iOSDC2025App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7195A232C07AEE8FE161C20 /* iOSDC2025App.swift */; };
-		9B3C8C6D36D7C45E970963D9 /* SampleSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0375234F5DFD79F7319A46AC /* SampleSlide.swift */; };
-		DEAD3971170796353D4C3257 /* SlideKit in Frameworks */ = {isa = PBXBuildFile; productRef = BDCE789008BB6AE232EC288F /* SlideKit */; };
+		6DA64BFA2E5E0C25003DCF74 /* SlideKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6DA64BF92E5E0C25003DCF74 /* SlideKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0173046551DED19B39FA1501 /* iOSDC2025.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSDC2025.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0375234F5DFD79F7319A46AC /* SampleSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSlide.swift; sourceTree = "<group>"; };
-		184CEDECF6642362DBBFBA2A /* iOSDC2025.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSDC2025.entitlements; sourceTree = "<group>"; };
-		1872AB0981B57A9A9DEAF5AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		577591A97478600D594CF9ED /* SlideConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideConfiguration.swift; sourceTree = "<group>"; };
-		F7195A232C07AEE8FE161C20 /* iOSDC2025App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDC2025App.swift; sourceTree = "<group>"; };
+		6DA64BAA2E5E0A95003DCF74 /* iOSDC2025.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSDC2025.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		6DA64BAB2E5E0A95003DCF74 /* iOSDC2025 */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = iOSDC2025; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
-		20B4982D1F21409A90A31D16 /* Frameworks */ = {
+		6DA64BA72E5E0A95003DCF74 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEAD3971170796353D4C3257 /* SlideKit in Frameworks */,
+				6DA64BFA2E5E0C25003DCF74 /* SlideKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D5F7D812E564EA000A8FAA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B9B4866130FD57CD3EDB1959 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0173046551DED19B39FA1501 /* iOSDC2025.app */,
+				6DA64BAA2E5E0A95003DCF74 /* iOSDC2025.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -45,51 +48,36 @@
 		C956FFF3A022F576C4B66FD1 = {
 			isa = PBXGroup;
 			children = (
-				E54F4418D364E00155DCEDA5 /* iOSDC2025 */,
+				6DA64BAB2E5E0A95003DCF74 /* iOSDC2025 */,
 				B9B4866130FD57CD3EDB1959 /* Products */,
+				6D5F7D812E564EA000A8FAA7 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		E54F4418D364E00155DCEDA5 /* iOSDC2025 */ = {
-			isa = PBXGroup;
-			children = (
-				1872AB0981B57A9A9DEAF5AD /* Info.plist */,
-				184CEDECF6642362DBBFBA2A /* iOSDC2025.entitlements */,
-				F7195A232C07AEE8FE161C20 /* iOSDC2025App.swift */,
-				577591A97478600D594CF9ED /* SlideConfiguration.swift */,
-				F821D8C215656392394732E7 /* Slides */,
-			);
-			path = iOSDC2025;
-			sourceTree = "<group>";
-		};
-		F821D8C215656392394732E7 /* Slides */ = {
-			isa = PBXGroup;
-			children = (
-				0375234F5DFD79F7319A46AC /* SampleSlide.swift */,
-			);
-			path = Slides;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CB12A0BC7F8714943B252986 /* iOSDC2025 */ = {
+		6DA64BA92E5E0A95003DCF74 /* iOSDC2025 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E680BA9F63D4D40FAF2CC1FD /* Build configuration list for PBXNativeTarget "iOSDC2025" */;
+			buildConfigurationList = 6DA64BB22E5E0A96003DCF74 /* Build configuration list for PBXNativeTarget "iOSDC2025" */;
 			buildPhases = (
-				89540CCB5CA864116CD3CC8C /* Sources */,
-				20B4982D1F21409A90A31D16 /* Frameworks */,
+				6DA64BA62E5E0A95003DCF74 /* Sources */,
+				6DA64BA72E5E0A95003DCF74 /* Frameworks */,
+				6DA64BA82E5E0A95003DCF74 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				6DA64BAB2E5E0A95003DCF74 /* iOSDC2025 */,
+			);
 			name = iOSDC2025;
 			packageProductDependencies = (
-				BDCE789008BB6AE232EC288F /* SlideKit */,
+				6DA64BF92E5E0C25003DCF74 /* SlideKit */,
 			);
 			productName = iOSDC2025;
-			productReference = 0173046551DED19B39FA1501 /* iOSDC2025.app */;
+			productReference = 6DA64BAA2E5E0A95003DCF74 /* iOSDC2025.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +87,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					6DA64BA92E5E0A95003DCF74 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+				};
 			};
 			buildConfigurationList = 114BC4C1B3AE68B958C2A505 /* Build configuration list for PBXProject "iOSDC2025" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -117,54 +111,48 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CB12A0BC7F8714943B252986 /* iOSDC2025 */,
+				6DA64BA92E5E0A95003DCF74 /* iOSDC2025 */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		6DA64BA82E5E0A95003DCF74 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		89540CCB5CA864116CD3CC8C /* Sources */ = {
+		6DA64BA62E5E0A95003DCF74 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B3C8C6D36D7C45E970963D9 /* SampleSlide.swift in Sources */,
-				21C3C004D4FF0ED14AF3D429 /* SlideConfiguration.swift in Sources */,
-				4B199F8194D60EE3FE7A29DD /* iOSDC2025App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		01E10327B9C5EEDCAECBE18E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				INFOPLIST_FILE = iOSDC2025/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.mtj0928.SlideGen.iOSDC2025;
-				SDKROOT = macosx;
-				SWIFT_VERSION = 6.0;
-			};
-			name = Release;
-		};
 		28607452605279D4B47FD93E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+			};
+			name = Debug;
+		};
+		6DA64BB32E5E0A96003DCF74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -190,19 +178,24 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
 					"DEBUG=1",
+					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -210,47 +203,43 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		5B9CC44BE5245F65AE00D693 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				INFOPLIST_FILE = iOSDC2025/Info.plist;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.mtj0928.SlideGen.iOSDC2025;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.yutailang0119.iOSDC2025;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
-				SWIFT_VERSION = 6.0;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		72461B2BDE0EF4A06FE88FA0 /* Release */ = {
+		6DA64BB42E5E0A96003DCF74 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -276,13 +265,18 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -290,14 +284,34 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.yutailang0119.iOSDC2025;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		72461B2BDE0EF4A06FE88FA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
 			};
 			name = Release;
 		};
@@ -313,11 +327,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		E680BA9F63D4D40FAF2CC1FD /* Build configuration list for PBXNativeTarget "iOSDC2025" */ = {
+		6DA64BB22E5E0A96003DCF74 /* Build configuration list for PBXNativeTarget "iOSDC2025" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5B9CC44BE5245F65AE00D693 /* Debug */,
-				01E10327B9C5EEDCAECBE18E /* Release */,
+				6DA64BB32E5E0A96003DCF74 /* Debug */,
+				6DA64BB42E5E0A96003DCF74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -336,7 +350,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BDCE789008BB6AE232EC288F /* SlideKit */ = {
+		6DA64BF92E5E0C25003DCF74 /* SlideKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 094F232FE5D8ECB5455E2AF2 /* XCRemoteSwiftPackageReference "SlideKit" */;
 			productName = SlideKit;
