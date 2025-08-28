@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6DA64BFA2E5E0C25003DCF74 /* SlideKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6DA64BF92E5E0C25003DCF74 /* SlideKit */; };
+		6DA64C172E602FDF003DCF74 /* BibiCamKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6DA64C162E602FDF003DCF74 /* BibiCamKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DA64BFA2E5E0C25003DCF74 /* SlideKit in Frameworks */,
+				6DA64C172E602FDF003DCF74 /* BibiCamKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +77,7 @@
 			name = iOSDC2025;
 			packageProductDependencies = (
 				6DA64BF92E5E0C25003DCF74 /* SlideKit */,
+				6DA64C162E602FDF003DCF74 /* BibiCamKit */,
 			);
 			productName = iOSDC2025;
 			productReference = 6DA64BAA2E5E0A95003DCF74 /* iOSDC2025.app */;
@@ -354,6 +357,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 094F232FE5D8ECB5455E2AF2 /* XCRemoteSwiftPackageReference "SlideKit" */;
 			productName = SlideKit;
+		};
+		6DA64C162E602FDF003DCF74 /* BibiCamKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BibiCamKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
