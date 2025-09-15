@@ -1,13 +1,16 @@
 import Foundation
 
 package struct CameraLiveStreamGenerateWebRTCRequest: ExecuteCommandRequest {
+  package let projectId: String
   package let deviceId: String
   private let offerSdp: String
 
   package init(
+    projectId: String,
     deviceId: String,
     offerSdp: String
   ) {
+    self.projectId = projectId
     self.deviceId = deviceId
     self.offerSdp = offerSdp
   }

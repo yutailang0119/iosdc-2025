@@ -2,7 +2,11 @@ import Foundation
 import HTTPKit
 
 package struct DevicesRequest: Request {
-  package init() {}
+  package let projectId: String
+
+  package init(projectId: String) {
+    self.projectId = projectId
+  }
 
   package var method: HTTPMethod {
     .get(queries: [])

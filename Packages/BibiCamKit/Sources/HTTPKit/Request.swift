@@ -2,6 +2,7 @@ import Foundation
 
 package protocol Request: Sendable {
   associatedtype Response: Decodable, Sendable
+  var projectId: String { get }
   var root: URL { get }
   var headers: [String: String] { get }
   var method: HTTPMethod { get }

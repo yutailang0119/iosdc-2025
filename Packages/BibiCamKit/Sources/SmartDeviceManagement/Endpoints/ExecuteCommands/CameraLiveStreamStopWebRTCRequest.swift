@@ -1,13 +1,16 @@
 import Foundation
 
 package struct CameraLiveStreamStopWebRTCRequest: ExecuteCommandRequest {
+  package let projectId: String
   package let deviceId: String
   private let mediaSessionId: String
 
   package init(
+    projectId: String,
     deviceId: String,
     mediaSessionId: String
   ) {
+    self.projectId = projectId
     self.deviceId = deviceId
     self.mediaSessionId = mediaSessionId
   }
