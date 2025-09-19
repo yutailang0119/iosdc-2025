@@ -20,7 +20,7 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(url: "https://github.com/stasel/WebRTC", exact: "140.0.0"),
+    .package(url: "https://github.com/stasel/WebRTC", exact: "140.0.0")
   ],
   targets: [
     .target(

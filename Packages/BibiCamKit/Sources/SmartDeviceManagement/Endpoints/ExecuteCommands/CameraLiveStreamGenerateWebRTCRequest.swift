@@ -29,7 +29,6 @@ extension CameraLiveStreamGenerateWebRTCRequest {
   }
 }
 
-
 extension CameraLiveStreamGenerateWebRTCRequest {
   package struct Response: Decodable, Sendable {
     package let results: Results

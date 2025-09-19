@@ -4,9 +4,19 @@ import SmartDeviceManagement
 import SwiftUI
 
 struct AppDependency {
+  var projectId: String {
+    ""
+  }
+
+  var nestCamId: String {
+    ""
+  }
+
   var smartDeviceManagement: (any APIClient)? {
     get async {
-      SmartDeviceManagementAPI(token: "")
+      SmartDeviceManagementAPI(
+        token: ""
+      )
     }
   }
 }

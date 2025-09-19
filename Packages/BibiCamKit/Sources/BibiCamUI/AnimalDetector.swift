@@ -14,67 +14,20 @@ final class AnimalDetector: NSObject, RTCVideoRenderer {
   func setSize(_ size: CGSize) {}
 
   func renderFrame(_ frame: RTCVideoFrame?) {
-    guard let frame = frame,
-      let buffer = frame.buffer.toI420().toCVPixelBuffer()
-    else {
+    guard let buffer = frame?.buffer as? RTCCVPixelBuffer else {
       return
     }
 
-    let request = VNDetectAnimalBodyPoseRequest()
-    let handler = VNImageRequestHandler(cvPixelBuffer: buffer, options: [:])
-    try? handler.perform([request])
-    guard let animalBodyAllParts = try? request.results?.first?.recognizedPoints(.all) else {
-      return
-    }
-    continuation.yield(animalBodyAllParts)
-  }
-}
-
-private extension RTCI420BufferProtocol {
-  func toCVPixelBuffer() -> CVPixelBuffer? {
-    let width = Int(width)
-    let height = Int(height)
-
-    var addresses: [UnsafeMutableRawPointer?] = [
-      UnsafeMutableRawPointer(mutating: dataY),
-      UnsafeMutableRawPointer(mutating: dataU),
-      UnsafeMutableRawPointer(mutating: dataV),
-    ]
-    var widths = [width, width / 2, width / 2]
-    var heights = [height, height / 2, height / 2]
-    var strides = [
-      Int(strideY),
-      Int(strideU),
-      Int(strideV),
-    ]
-
-    var pixelBuffer: CVPixelBuffer?
-    let result = addresses.withUnsafeMutableBufferPointer { plane in
-      widths.withUnsafeMutableBufferPointer { planeWidth in
-        heights.withUnsafeMutableBufferPointer { planeHeight in
-          strides.withUnsafeMutableBufferPointer { planeBytesPerRow in
-            CVPixelBufferCreateWithPlanarBytes(
-              kCFAllocatorDefault,
-              width,
-              height,
-              kCVPixelFormatType_420YpCbCr8Planar,
-              nil,
-              0,
-              3,
-              plane.baseAddress!,
-              planeWidth.baseAddress!,
-              planeHeight.baseAddress!,
-              planeBytesPerRow.baseAddress!,
-              nil,
-              nil,
-              nil,
-              &pixelBuffer
-            )
-          }
-        }
+    let request = VNDetectAnimalBodyPoseRequest { result, error in
+      guard let results = result.results as? [VNAnimalBodyPoseObservation],
+        let parts = try? results.first?.recognizedPoints(.all)
+      else {
+        return
       }
+      self.continuation.yield(parts)
     }
 
-    return (result == kCVReturnSuccess) ? pixelBuffer : nil
+    let handler = VNImageRequestHandler(cvPixelBuffer: buffer.pixelBuffer, options: [:])
+    try? handler.perform([request])
   }
 }

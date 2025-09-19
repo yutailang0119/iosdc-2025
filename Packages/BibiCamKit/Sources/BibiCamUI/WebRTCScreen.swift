@@ -1,40 +1,27 @@
 import Foundation
 import SmartDeviceManagement
 import SwiftUI
+import Vision
 @preconcurrency import WebRTC
 
 struct WebRTCScreen: View {
   @State var state: ViewState
 
   var body: some View {
-    Screen(state.phase) {
-      VideoView(videoTrack: $0.videoTrack)
-        .toolbar {
-          ToolbarItem {
-            Button {
-              Task {
-                await state.close()
-              }
-            } label: {
-              Label("Disconnect", symbol: .stop)
-            }
-          }
+    Screen(state.phase) { connection in
+      ZStack {
+        VideoView(videoTrack: connection.videoTrack)
+        GeometryReader { proxy in
+          AnimalSkeletonView(animalBodyParts: state.parts, size: proxy.size)
         }
-    } empty: {
-      ContentUnavailableView {
-        Label("No video stream", symbol: .webCamera)
-      } actions: {
-        Button {
-          Task {
-            await state.connect()
-          }
-        } label: {
-          Label("Connect", symbol: .play)
-        }
+      }
+      .onAppear {
+        connection.videoTrack.add(state.detector)
       }
     }
     .task {
       await state.connect()
+      await state.stream()
     }
     .onDisappear {
       Task {
@@ -47,7 +34,7 @@ struct WebRTCScreen: View {
 extension WebRTCScreen {
   #if canImport(UIKit)
   struct VideoView: UIViewRepresentable {
-    let videoTrack: RTCVideoTrack
+    var videoTrack: RTCVideoTrack
 
     func makeUIView(context: Context) -> RTCMTLVideoView {
       let view = RTCMTLVideoView()
@@ -61,7 +48,7 @@ extension WebRTCScreen {
   }
   #elseif canImport(AppKit)
   struct VideoView: NSViewRepresentable {
-    let videoTrack: RTCVideoTrack
+    var videoTrack: RTCVideoTrack
 
     func makeNSView(context: Context) -> RTCMTLNSVideoView {
       let view = RTCMTLNSVideoView()
@@ -85,13 +72,18 @@ extension WebRTCScreen {
     }
 
     private let dependency: AppDependency
-    private let deviceId: String
+    private let isSkeletonEnabled: Bool
 
     private(set) var phase: ScreenPhase<Connection, Error> = .loading
+    let detector = AnimalDetector()
+    var parts: [VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint] = [:]
 
-    init(dependency: AppDependency, deviceId: String) {
+    init(
+      dependency: AppDependency,
+      isSkeletonEnabled: Bool,
+    ) {
       self.dependency = dependency
-      self.deviceId = deviceId
+      self.isSkeletonEnabled = isSkeletonEnabled
     }
 
     @MainActor
@@ -100,9 +92,9 @@ extension WebRTCScreen {
         return
       }
       let factory = RTCPeerConnectionFactory()
+
       let configuration = RTCConfiguration()
       configuration.sdpSemantics = .unifiedPlan
-
       let constraints = RTCMediaConstraints(
         mandatoryConstraints: [
           kRTCMediaConstraintsOfferToReceiveAudio: kRTCMediaConstraintsValueTrue,
@@ -127,7 +119,8 @@ extension WebRTCScreen {
         let offer = try await peerConnection.offer(for: constraints)
         try await peerConnection.setLocalDescription(offer)
         let request = CameraLiveStreamGenerateWebRTCRequest(
-          deviceId: deviceId,
+          projectId: dependency.projectId,
+          deviceId: dependency.nestCamId,
           offerSdp: offer.sdp
         )
         let response = try await client.request(for: request)
@@ -157,13 +150,23 @@ extension WebRTCScreen {
     }
 
     @MainActor
+    func stream() async {
+      if isSkeletonEnabled {
+        for await parts in detector.stream {
+          self.parts = parts
+        }
+      }
+    }
+
+    @MainActor
     func close() async {
       guard case .loaded(let connection) = phase else {
         return
       }
       connection.peerConnection.close()
       let request = CameraLiveStreamStopWebRTCRequest(
-        deviceId: deviceId,
+        projectId: dependency.projectId,
+        deviceId: dependency.nestCamId,
         mediaSessionId: connection.mediaSessionId
       )
       _ = try? await dependency.smartDeviceManagement?.request(for: request)
