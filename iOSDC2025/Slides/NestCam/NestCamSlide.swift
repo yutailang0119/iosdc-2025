@@ -43,7 +43,7 @@ struct NestCamSlide: View {
   var script: String {
     """
     Google Nest Camの魅力は、Google Homeと連携した使い方はもちろん
-    Smart Device Management APIが提供され、WebRTCによる映像通信をサポートします
+    Smart Device Management APIが提供され、WebRTCによる映像通信をサポートしていることです
     """
   }
 }
