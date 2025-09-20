@@ -211,13 +211,12 @@ private struct Line: Shape {
       .translatedBy(x: 0.0, y: -1.0)
       .concatenating(.identity.scaledBy(x: 1.0, y: -1.0))
       .concatenating(.identity.scaledBy(x: size.width, y: size.height))
-    let path = Path {
+    return Path {
       $0.move(to: points[0])
       for point in points {
         $0.addLine(to: point)
       }
-    }
-    return path.applying(pointTransform)
+    }.applying(pointTransform)
   }
 }
 
@@ -233,8 +232,10 @@ private struct Dot: Shape {
       .concatenating(.identity.scaledBy(x: size.width, y: size.height))
     let size = CGSize(width: 20 / size.width, height: 20 / size.height)
     return Path(
-      ellipseIn: CGRect(origin: CGPoint(x: point.x - size.width / 2, y: point.y - size.height / 2), size: size)
-    )
-    .applying(pointTransform)
+      ellipseIn: CGRect(
+        origin: CGPoint(x: point.x - size.width / 2, y: point.y - size.height / 2),
+        size: size
+      )
+    ).applying(pointTransform)
   }
 }
