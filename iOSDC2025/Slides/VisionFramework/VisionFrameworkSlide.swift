@@ -12,7 +12,7 @@ import SwiftUI
 struct VisionFrameworkSlide: View {
   var body: some View {
     HeaderSlide("Vision.framework") {
-      Item("⚠️シミュレーターでは使用できない")
+      Item("⚠️ シミュレーターでは使用できない")
       Item("> * Tracking human and animal body poses or the trajectory of an object")
       Item("VNImageRequestHandlerを通して、画像の処理を実行")
     }

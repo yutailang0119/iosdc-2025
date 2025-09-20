@@ -18,7 +18,7 @@ struct SDMAPISlide: View {
       Item("Nestデバイスにアクセス、操作、管理") {
         Item("Thermostat、Cam、Doorbell、Hub Max...")
       }
-      Item("⚠️ 登録料 US$5+tax 必要")
+      Item("💸 登録料 US$5+tax")
     }
     .background(.background)
   }
