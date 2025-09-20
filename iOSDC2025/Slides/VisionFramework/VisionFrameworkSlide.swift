@@ -12,19 +12,18 @@ import SwiftUI
 struct VisionFrameworkSlide: View {
   var body: some View {
     HeaderSlide("Vision.framework") {
+      Item("⚠️シミュレーターでは使用できない")
       Item("> * Tracking human and animal body poses or the trajectory of an object")
       Item("VNImageRequestHandlerを通して、画像の処理を実行")
-      Item("⚠️シミュレーターでは使用できない")
-
     }
     .background(.background)
   }
 
   var script: String {
     """
+    前提として、Vision.frameworkはシミュレーターでは使用できません
     Vision.frameworkの概要には「人間と動物のポーズや軌跡を追跡する」と記載されています
-    画像に関する処理なので、`VNImageRequestHandler` を使用します
-    シミュレーターでは使用できません
+    ここでは画像に関する処理なので、`VNImageRequestHandler` を使用します
     """
   }
 }
