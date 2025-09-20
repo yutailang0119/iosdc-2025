@@ -29,7 +29,7 @@ struct iOSDC2025App: App {
       }
     }
     .setupAsPresentationWindow(Self.configuration.slideIndexController) {
-      NSWorkspace.shared.open(URL(string: "Foo://editor")!)
+      NSWorkspace.shared.open(URL(string: "iOSDC2025://editor")!)
     }
     .addPDFExportCommands(
       for: presentationContentView,
