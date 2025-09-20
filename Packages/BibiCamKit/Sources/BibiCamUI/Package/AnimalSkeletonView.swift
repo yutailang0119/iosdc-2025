@@ -84,7 +84,7 @@ package struct AnimalSkeletonView: View {
                 }
               }
             }
-            // trunk - Draw a line from the nose to the neck.
+            // trunk - The nose to the neck.
             if let nose = animalBodyParts[.nose] {
               if let neck = animalBodyParts[.neck] {
                 Line(points: [nose.location, neck.location], size: size)
@@ -92,7 +92,7 @@ package struct AnimalSkeletonView: View {
                   .fill(color ?? Color.yellow)
               }
             }
-            // tail - Draw a line from the neck to the bottom tail.
+            // tail - The neck to the bottom tail.
             if let neck = animalBodyParts[.neck] {
               if let tailBottom = animalBodyParts[.tailBottom] {
                 Line(
@@ -178,7 +178,7 @@ package struct AnimalSkeletonView: View {
             }
           }
           ZStack {
-            // Connect the tail joints.
+            // taols.
             if let tailBottom = animalBodyParts[.tailBottom] {
               if let tailMiddle = animalBodyParts[.tailMiddle] {
                 if let tailTop = animalBodyParts[.tailTop] {
