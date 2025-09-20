@@ -15,6 +15,65 @@ struct SlideConfiguration {
 
   ///  Add your slides into the trailing closure.
   let slideIndexController = SlideIndexController {
-    SampleSlide()
+    // Cover
+    CoverSlide()
+
+    // Introduction
+    YutailangSlide()
+    BibiSlide()
+    IntroductionTitleSlide()
+    IntroductionSlide()
+
+    // NestCam
+    NestCamSlide()
+    NestCamConnectTitleSlide()
+    NestCamStepsSlide()
+
+    // OAuth 2.0
+    OAuthStepsSlide()
+
+    // Smart Device Management API
+    SDMAPISlide()
+
+    // WebRTC
+    WebRTCSlide()
+    WebRTCStepsSlide()
+    WebRTCCodeSlide()
+    WebRTCDemoSlide()
+
+    // RecapNestCam
+    RecapNestCamTitleSlide()
+    RecapNestCamSlide()
+
+    // Vision.framework
+    VisionFrameworkTitleSlide()
+    VisionFrameworkSlide()
+    VNImageBasedRequestSlide()
+    VNAnimalBodyPoseObservationJointNameSlide()
+    VNImageBasedRequestDemoSlide()
+
+    // DetectAnimalBodyPose
+    DetectAnimalBodyPoseTitleSlide()
+    CVPixelBufferSlide()
+    DetectAnimalBodyPoseStepsSlide()
+    DetectAnimalBodyPoseCodeSlide()
+    DetectAnimalBodyPoseDemoSlide()
+
+    // Bonyar
+    BonyarTitleSlide()
+    BonnardSlide()
+    BonyarSlide()
+    BonyarDemoSlide()
+    BonyarRecapSlide()
+
+    // Conclusion
+    ConclusionTitleSlide()
+    ConclusionSlide()
+
+    // References
+    ReferencesSlide()
+
+    // Imprint
+    ImprintSlide()
   }
 }
