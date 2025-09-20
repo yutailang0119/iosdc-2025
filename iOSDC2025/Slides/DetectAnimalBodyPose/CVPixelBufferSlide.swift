@@ -37,9 +37,11 @@ struct CVPixelBufferSlide: View {
         Item("Foundation.Data/URL")
       }
       .foregroundStyle(phase.foregroundStyle)
-      Item("WebRTC.RTCVideoFrame -> CoreVideo.CVPixelBuffer") {
-        Item("RTCVideoFrame.buffer as? RTCCVPixelBuffer")
-        Item("RTCCVPixelBuffer.pixelBuffer: CVPixelBuffer")
+      if phase == .second {
+        Item("WebRTC.RTCVideoFrame -> CoreVideo.CVPixelBuffer") {
+          Item("RTCVideoFrame.buffer as? RTCCVPixelBuffer")
+          Item("RTCCVPixelBuffer.pixelBuffer: CVPixelBuffer")
+        }
       }
     }
     .background(.background)
