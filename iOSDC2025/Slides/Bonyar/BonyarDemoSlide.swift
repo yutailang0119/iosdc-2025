@@ -37,8 +37,7 @@ struct BonyarDemoSlide: View {
     switch self.phase {
     case .initial:
       """
-      暗闇で光る目がかわいいですね
-      不在の間に偶然撮影されたボニャール画像を、ポーズ検出で特定できるかというと
+      不在の間に撮影されたボニャール画像を、ポーズ検出で特定できるかというと
       """
     case .second:
       """

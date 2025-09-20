@@ -21,7 +21,7 @@ struct BonyarTitleSlide: View {
 
   var script: String {
     """
-    ポーズの検出はできました
+    ポーズの検出ができました
     では、猫のかわいいポーズとは？
     """
   }

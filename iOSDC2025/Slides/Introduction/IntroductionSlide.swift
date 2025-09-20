@@ -26,8 +26,7 @@ struct IntroductionSlide: View {
   var script: String {
     """
     引っ越しに合わせて始まりました
-    猫どころか、動物との生活が初めての経験
-    外出先でも様子を見るため、ネットワークカメラ、いわゆるペットカメラとしてGoogle Nest Camを購入しました
+    外出先でも様子を確認するため、ネットワークカメラ、いわゆるペットカメラとしてGoogle Nest Camを購入しました
     """
   }
 }
