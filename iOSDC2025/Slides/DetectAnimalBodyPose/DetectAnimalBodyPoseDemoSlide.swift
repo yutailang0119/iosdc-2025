@@ -46,6 +46,7 @@ struct DetectAnimalBodyPoseDemoSlide: View {
     case .third:
       """
       こちらも事前に撮影した映像をご覧ください
+      正確にトラッキングできていそうです
       """
     }
   }

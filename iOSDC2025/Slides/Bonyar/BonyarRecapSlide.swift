@@ -22,7 +22,7 @@ struct BonyarRecapSlide: View {
 
   var script: String {
     """
-    ジョイント追跡数が増えることに期待しましょう
+    ジョイント追跡数が増えることに期待しています
     """
   }
 }

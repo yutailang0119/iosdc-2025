@@ -45,7 +45,7 @@ struct VNAnimalBodyPoseObservationJointNameSlide: View {
 
   var script: String {
     """
-    (2026年OS) 現在、25箇所のジョイントを取得できます
+    (2026年OS) 現在、25箇所のジョイントが定義されています
     """
   }
 }
