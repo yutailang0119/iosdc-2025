@@ -21,7 +21,7 @@ struct ConclusionSlide: View {
       Item("猫のポーズ検出") {
         Item("VNDetectAnimalBodyPoseRequest")
       }
-      Item("かわいいポーズ検出は奥深い")
+      Item("どんな時でも猫はかわいい")
     }
     .background(.background)
   }
