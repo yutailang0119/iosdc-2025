@@ -15,7 +15,7 @@ struct VisionFrameworkTitleSlide: View {
       text: """
         猫のポーズを可視化
         with
-        Vision.framework
+        Vision framework
         """
     )
     .background(.background)
@@ -23,7 +23,7 @@ struct VisionFrameworkTitleSlide: View {
 
   var script: String {
     """
-    ここからは映像をVision.frameworkと連携していきます
+    ここからは映像をVision frameworkと連携していきます
     """
   }
 }

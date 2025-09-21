@@ -23,7 +23,7 @@ struct CoverSlide: View {
           .font(.system(size: 120, weight: .bold, design: .default))
           .foregroundColor(.primary)
           .multilineTextAlignment(.center)
-          Text(verbatim: "~Vision.frameworkでペットを愛でよう~")
+          Text(verbatim: "~Vision frameworkでペットを愛でよう~")
             .font(.system(size: 80, weight: .bold, design: .default))
             .foregroundColor(.primary)
         }

@@ -17,7 +17,7 @@ struct ConclusionSlide: View {
         Item("Smart Device Management API")
         Item("WebRTC")
       }
-      Item("WebRTC -> Core Video -> Vision.framework")
+      Item("WebRTC -> Core Video -> Vision framework")
       Item("猫のポーズ検出") {
         Item("VNDetectAnimalBodyPoseRequest")
       }
@@ -29,7 +29,7 @@ struct ConclusionSlide: View {
   var script: String {
     """
     Google Nest CamにAPIでアクセス
-    WebRTCからCore Video、Vision.frameworkと接続し
+    WebRTCからCore Video、Vision frameworkと接続し
     猫のポーズ検出を紹介しました
     それから、お話ししたことは全部犬でもできます
     """

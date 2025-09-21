@@ -45,7 +45,7 @@ struct SlideConfiguration {
     RecapNestCamTitleSlide()
     RecapNestCamSlide()
 
-    // Vision.framework
+    // Vision framework
     VisionFrameworkTitleSlide()
     VisionFrameworkSlide()
     VNImageBasedRequestSlide()

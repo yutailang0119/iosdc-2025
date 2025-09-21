@@ -11,7 +11,7 @@ import SwiftUI
 @Slide
 struct DetectAnimalBodyPoseStepsSlide: View {
   var body: some View {
-    HeaderSlide("WebRTC -> Core Video -> Vision.framework") {
+    HeaderSlide("WebRTC -> Core Video -> Vision framework") {
       Item("WebRTC.RTCVideoRendererで処理開始", accessory: .number(1))
       Item("CoreVideo.CVPixelBufferに変換", accessory: .number(2))
       Item("VNImageRequestHandler.perform(_:options:)", accessory: .number(3)) {
@@ -26,7 +26,7 @@ struct DetectAnimalBodyPoseStepsSlide: View {
   var script: String {
     """
     準備が整いました
-    WebRTCからCore Video、Vision.frameworkと繋いで、解析したジョイントを動画に重ねてプロットします
+    WebRTCからCore Video、Vision frameworkと繋いで、解析したジョイントを動画に重ねてプロットします
     """
   }
 }

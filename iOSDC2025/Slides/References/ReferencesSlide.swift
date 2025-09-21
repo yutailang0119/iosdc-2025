@@ -123,7 +123,7 @@ struct ReferencesSlide: View {
     switch phase {
     case .initial:
       """
-      Vision.frameworkについては、WWDC23のビデオとサンプルコードを参考にしています
+      Vision frameworkについては、WWDC23のビデオとサンプルコードを参考にしています
       """
     case .second:
       """

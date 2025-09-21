@@ -26,7 +26,7 @@ struct CVPixelBufferSlide: View {
   var body: some View {
     HeaderSlide {
       Text("WebRTC -> Core Video")
-        + Text(" -> Vision.framework").foregroundStyle(.tertiary)
+        + Text(" -> Vision framework").foregroundStyle(.tertiary)
     } content: {
       Item("VNImageRequestHandler.init") {
         Item("CoreGraphics.CGImage")
