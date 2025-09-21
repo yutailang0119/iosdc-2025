@@ -59,7 +59,7 @@ struct WebRTCSlide: View {
 
   var script: String {
     """
-    OSSで開発されているWebRTCは、Appleプラットフォームアプリでの実行をサポートしています
+    WebRTCはAppleプラットフォームアプリでの実行をサポートしています
     公式でのバイナリ配布は停止しているので、自身でコンパイルするか、3rd-partyのxcframeworkを使用するとよいでしょう
     """
   }

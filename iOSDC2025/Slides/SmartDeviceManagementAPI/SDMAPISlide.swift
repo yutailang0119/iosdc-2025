@@ -26,7 +26,7 @@ struct SDMAPISlide: View {
   var script: String {
     """
     Smart Device Management APIの設定を行います
-    登録料として、初回に$5必要なので注意
+    登録料として、初回に$5必要なので注意してください
     """
   }
 }
