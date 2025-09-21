@@ -45,6 +45,10 @@ struct BonyarDemoSlide: View {
       """
     }
   }
+
+  var shouldHideIndex: Bool {
+    true
+  }
 }
 
 #Preview {

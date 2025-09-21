@@ -46,6 +46,10 @@ struct VNImageBasedRequestDemoSlide: View {
       """
     }
   }
+
+  var shouldHideIndex: Bool {
+    true
+  }
 }
 
 #Preview {
