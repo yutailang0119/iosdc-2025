@@ -42,7 +42,7 @@ struct VNImageBasedRequestDemoSlide: View {
     case .second:
       """
       こうなります
-      ちなみに、スライドはSlideKitを使ってmacOSアプリとして実行しているので、画像処理はこの場で行なっています
+      スライドはSlideKitを使ってmacOSアプリとして実行しているので、画像処理はこの場で行なっています
       """
     }
   }
