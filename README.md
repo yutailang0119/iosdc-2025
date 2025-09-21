@@ -1,5 +1,7 @@
 # 猫と暮らすネットワークカメラ生活🐈 \~Vision.frameworkでペットを愛でよう\~
-https://fortee.jp/iosdc-japan-2025/proposal/292e2ec3-d74b-49a6-a8cb-63c2883d589e
+
+* https://fortee.jp/iosdc-japan-2025/proposal/292e2ec3-d74b-49a6-a8cb-63c2883d589e
+* https://speakerdeck.com/yutailang0119/iosdc-japan-2025
 
 　このリポジトリは、[iOSDC Japan 2025](https://iosdc.jp/2025/)の発表スライドです。
 
