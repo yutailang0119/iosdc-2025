@@ -31,7 +31,7 @@ struct ConclusionSlide: View {
     Google Nest CamにAPIでアクセス
     WebRTCからCore Video、Vision frameworkと接続し
     猫のポーズ検出を紹介しました
-    それから、お話ししたことは全部犬でもできます
+    ここまでお話ししたことは、全部犬にも適用できます
     """
   }
 }
