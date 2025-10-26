@@ -17,6 +17,6 @@ package enum HTTPMethod: Sendable {
 extension HTTPMethod {
   package enum Body: Sendable {
     case formUrlencoded(queries: [URLQueryItem])
-    case json(any (Encodable & Sendable))
+    case json(any Encodable & Sendable)
   }
 }
