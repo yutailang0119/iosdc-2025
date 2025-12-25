@@ -10,12 +10,8 @@ struct Screen<Value, Failure: Swift.Error, Loading: View, Empty: View, Loaded: V
   init(
     _ phase: ScreenPhase<Value, Failure>,
     @ViewBuilder loaded: @escaping (Value) -> Loaded,
-    @ViewBuilder loading: @escaping () -> Loading = {
-      ProgressView()
-    },
-    @ViewBuilder empty: @escaping () -> Empty = {
-      EmptyView()
-    },
+    @ViewBuilder loading: @escaping () -> Loading = { ProgressView() },
+    @ViewBuilder empty: @escaping () -> Empty = { EmptyView() },
     @ViewBuilder failed: @escaping (Failure) -> Failed
   ) {
     self.phase = phase
@@ -28,12 +24,8 @@ struct Screen<Value, Failure: Swift.Error, Loading: View, Empty: View, Loaded: V
   init(
     _ phase: ScreenPhase<Value, Failure>,
     @ViewBuilder loaded: @escaping (Value) -> Loaded,
-    @ViewBuilder loading: @escaping () -> Loading = {
-      ProgressView()
-    },
-    @ViewBuilder empty: @escaping () -> Empty = {
-      EmptyView()
-    }
+    @ViewBuilder loading: @escaping () -> Loading = { ProgressView() },
+    @ViewBuilder empty: @escaping () -> Empty = { EmptyView() }
   )
   where
     Failed == ContentUnavailableView<
