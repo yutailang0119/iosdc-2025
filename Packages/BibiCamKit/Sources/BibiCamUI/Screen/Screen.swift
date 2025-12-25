@@ -1,12 +1,5 @@
 import SwiftUI
 
-enum ScreenPhase<Value, Failure: Swift.Error> {
-  case loading
-  case empty
-  case loaded(Value)
-  case failed(Failure)
-}
-
 struct Screen<Value, Failure: Swift.Error, Loading: View, Empty: View, Loaded: View, Failed: View>: View {
   private var phase: ScreenPhase<Value, Failure>
   private var loading: () -> Loading
@@ -141,55 +134,6 @@ struct ListScreen<Value, Failure: Swift.Error, Loading: View, Empty: View, Loade
       case .failed(let error):
         failed(error)
       }
-    }
-  }
-}
-
-struct ScreenUnavailableContent {
-  struct Label: View {
-    let error: Error
-
-    var body: some View {
-      SwiftUI.Label {
-        Text(error.title)
-      } icon: {
-        Image(symbol: .exclamationmark)
-          .symbolVariant(.circle)
-      }
-    }
-  }
-
-  struct Description: View {
-    let error: Error
-
-    var body: some View {
-      Text(error.description)
-    }
-  }
-
-  struct Actions: View {
-    var body: some View {
-      EmptyView()
-    }
-  }
-}
-
-extension ContentUnavailableView
-where
-  Label == ScreenUnavailableContent.Label, Description == ScreenUnavailableContent.Description,
-  Actions == ScreenUnavailableContent.Actions
-{
-  static func screen(
-    error: Error
-  ) -> ContentUnavailableView<
-    ScreenUnavailableContent.Label, ScreenUnavailableContent.Description, ScreenUnavailableContent.Actions
-  > {
-    ContentUnavailableView {
-      ScreenUnavailableContent.Label(error: error)
-    } description: {
-      ScreenUnavailableContent.Description(error: error)
-    } actions: {
-      ScreenUnavailableContent.Actions()
     }
   }
 }
