@@ -30,7 +30,7 @@ struct YutailangSlide: View {
         }
         Item {
           Label {
-            Text("AVP座談会")
+            Text("Apple Vision Pro座談会")
           } icon: {
             Image(systemName: "vision.pro")
           }
