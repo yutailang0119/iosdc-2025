@@ -37,7 +37,7 @@ struct Screen<Value, Failure: Swift.Error, Loading: View, Empty: View, Loaded: V
   )
   where
     Failed == ContentUnavailableView<
-      ScreenUnavailableContent.Label, ScreenUnavailableContent.Description, ScreenUnavailableContent.Actions
+      ScreenUnavailableContent.Label, ScreenUnavailableContent.Description, EmptyView
     >
   {
     self.phase = phase
@@ -100,7 +100,7 @@ struct ListScreen<Value, Failure: Swift.Error, Loading: View, Empty: View, Loade
   )
   where
     Failed == ContentUnavailableView<
-      ScreenUnavailableContent.Label, ScreenUnavailableContent.Description, ScreenUnavailableContent.Actions
+      ScreenUnavailableContent.Label, ScreenUnavailableContent.Description, EmptyView
     >
   {
     self.phase = phase

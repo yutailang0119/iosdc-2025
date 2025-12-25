@@ -22,31 +22,25 @@ struct ScreenUnavailableContent {
       Text(error.description)
     }
   }
-
-  struct Actions: View {
-    var body: some View {
-      EmptyView()
-    }
-  }
 }
 
 extension ContentUnavailableView
 where
   Label == ScreenUnavailableContent.Label,
   Description == ScreenUnavailableContent.Description,
-  Actions == ScreenUnavailableContent.Actions
+  Actions == EmptyView
 {
   static func screen(
     error: Error
   ) -> ContentUnavailableView<
-    ScreenUnavailableContent.Label, ScreenUnavailableContent.Description, ScreenUnavailableContent.Actions
+    ScreenUnavailableContent.Label, ScreenUnavailableContent.Description, EmptyView,
   > {
     ContentUnavailableView {
       ScreenUnavailableContent.Label(error: error)
     } description: {
       ScreenUnavailableContent.Description(error: error)
     } actions: {
-      ScreenUnavailableContent.Actions()
+      EmptyView()
     }
   }
 }
