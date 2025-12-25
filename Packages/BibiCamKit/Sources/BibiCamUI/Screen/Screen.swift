@@ -21,26 +21,6 @@ struct Screen<Value, Failure: Swift.Error, Loading: View, Empty: View, Loaded: V
     self.failed = failed
   }
 
-  init(
-    _ phase: ScreenPhase<Value, Failure>,
-    @ViewBuilder loaded: @escaping (Value) -> Loaded,
-    @ViewBuilder loading: @escaping () -> Loading = { ProgressView() },
-    @ViewBuilder empty: @escaping () -> Empty = { EmptyView() }
-  )
-  where
-    Failed == ContentUnavailableView<
-      ScreenUnavailableContent.Label, ScreenUnavailableContent.Description, EmptyView
-    >
-  {
-    self.phase = phase
-    self.loading = loading
-    self.empty = empty
-    self.loaded = loaded
-    self.failed = { error in
-      ContentUnavailableView.screen(error: error)
-    }
-  }
-
   var body: some View {
     switch phase {
     case .loading:
@@ -51,6 +31,25 @@ struct Screen<Value, Failure: Swift.Error, Loading: View, Empty: View, Loaded: V
       loaded(value)
     case .failed(let error):
       failed(error)
+    }
+  }
+}
+
+extension Screen
+where Failed == ContentUnavailableView<ScreenUnavailableContent.Label, ScreenUnavailableContent.Description, EmptyView>
+{
+  init(
+    _ phase: ScreenPhase<Value, Failure>,
+    @ViewBuilder loaded: @escaping (Value) -> Loaded,
+    @ViewBuilder loading: @escaping () -> Loading = { ProgressView() },
+    @ViewBuilder empty: @escaping () -> Empty = { EmptyView() }
+  ) {
+    self.phase = phase
+    self.loading = loading
+    self.empty = empty
+    self.loaded = loaded
+    self.failed = { error in
+      ContentUnavailableView.screen(error: error)
     }
   }
 }
