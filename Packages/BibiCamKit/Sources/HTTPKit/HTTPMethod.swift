@@ -6,10 +6,8 @@ package enum HTTPMethod: Sendable {
 
   var raw: String {
     switch self {
-    case .get:
-      return "GET"
-    case .post:
-      return "POST"
+    case .get: "GET"
+    case .post: "POST"
     }
   }
 }

@@ -16,20 +16,18 @@ package extension Request {
   var headers: [String: String] {
     switch method {
     case .get:
-      return [:]
+      [:]
     case .post(.formUrlencoded):
-      return ["Content-Type": "application/x-www-form-urlencoded"]
+      ["Content-Type": "application/x-www-form-urlencoded"]
     case .post(.json):
-      return ["Content-Type": "application/json"]
+      ["Content-Type": "application/json"]
     }
   }
 
   var queryItems: [URLQueryItem]? {
     switch method {
-    case .get(let queries):
-      return queries
-    case .post:
-      return nil
+    case .get(let queries): queries
+    case .post: nil
     }
   }
 

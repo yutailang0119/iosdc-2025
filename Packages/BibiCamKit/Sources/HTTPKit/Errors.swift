@@ -10,22 +10,22 @@ extension APIError: CustomStringConvertible {
   var title: String {
     switch self {
     case .connection:
-      return "Connection Error"
+      "Connection Error"
     case .request:
-      return "Request Error"
+      "Request Error"
     case .response:
-      return "Response Error"
+      "Response Error"
     }
   }
 
   package var description: String {
     switch self {
     case .connection(let error):
-      return error.localizedDescription
+      error.localizedDescription
     case .request(let error):
-      return error.localizedDescription
+      error.localizedDescription
     case .response(let responseError):
-      return responseError.description
+      responseError.description
     }
   }
 }
