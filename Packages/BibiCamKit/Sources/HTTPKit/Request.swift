@@ -50,8 +50,7 @@ package extension Request {
       resolvingAgainstBaseURL: false
     )
     components?.path += path
-    components?.queryItems = queryItems?
-      .filter { $0.value != nil }
+    components?.queryItems = queryItems
     guard let url = components?.url else {
       fatalError()
     }
