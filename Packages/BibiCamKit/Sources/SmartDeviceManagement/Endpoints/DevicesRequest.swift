@@ -2,10 +2,10 @@ import Foundation
 import HTTPKit
 
 package struct DevicesRequest: Request {
-  package let projectId: String
+  package let projectID: String
 
-  package init(projectId: String) {
-    self.projectId = projectId
+  package init(projectID: String) {
+    self.projectID = projectID
   }
 
   package var method: HTTPMethod {

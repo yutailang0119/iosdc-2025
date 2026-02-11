@@ -57,8 +57,8 @@ struct WebRTCCodeSlide: View {
             // 3. SDM APIにSDP Offerを送信
             // 4. SDP Answerを受信
             let request = CameraLiveStreamGenerateWebRTCRequest(
-              projectId: dependency.projectId,
-              deviceId: dependency.nestCamId,
+              projectID: dependency.projectID,
+              deviceID: dependency.nestCamID,
               offerSdp: offer.sdp
             )
             let response = try await client.request(for: request)

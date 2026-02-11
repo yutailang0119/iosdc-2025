@@ -1,17 +1,17 @@
 import Foundation
 
 package struct CameraLiveStreamGenerateWebRTCRequest: ExecuteCommandRequest {
-  package let projectId: String
-  package let deviceId: String
+  package let projectID: String
+  package let deviceID: String
   private let offerSdp: String
 
   package init(
-    projectId: String,
-    deviceId: String,
+    projectID: String,
+    deviceID: String,
     offerSdp: String
   ) {
-    self.projectId = projectId
-    self.deviceId = deviceId
+    self.projectID = projectID
+    self.deviceID = deviceID
     self.offerSdp = offerSdp
   }
 
@@ -38,19 +38,19 @@ extension CameraLiveStreamGenerateWebRTCRequest {
 extension CameraLiveStreamGenerateWebRTCRequest.Response {
   package struct Results: Decodable, Sendable {
     package let answerSdp: String
-    package let mediaSessionId: String
+    package let mediaSessionID: String
     package let expiresAt: Date?
 
-    private enum CodingKeys: CodingKey {
+    private enum CodingKeys: String, CodingKey {
       case answerSdp
-      case mediaSessionId
+      case mediaSessionID = "mediaSessionId"
       case expiresAt
     }
 
     package init(from decoder: any Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
       self.answerSdp = try container.decode(String.self, forKey: CodingKeys.answerSdp)
-      self.mediaSessionId = try container.decode(String.self, forKey: CodingKeys.mediaSessionId)
+      self.mediaSessionID = try container.decode(String.self, forKey: CodingKeys.mediaSessionID)
       self.expiresAt = try container.decodeIfPresent(String.self, forKey: CodingKeys.expiresAt)
         .flatMap {
           let formatter = ISO8601DateFormatter()

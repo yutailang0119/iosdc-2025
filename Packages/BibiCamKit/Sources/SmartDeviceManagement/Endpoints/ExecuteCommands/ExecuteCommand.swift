@@ -13,8 +13,8 @@ package struct CommandPayload<Params: Encodable & Sendable>: Encodable, Sendable
 
 package protocol ExecuteCommandRequest: Request {
   associatedtype Params: Encodable & Sendable
-  var projectId: String { get }
-  var deviceId: String { get }
+  var projectID: String { get }
+  var deviceID: String { get }
   var payload: CommandPayload<Params> { get }
 }
 
@@ -24,6 +24,6 @@ extension ExecuteCommandRequest {
   }
 
   package var path: String {
-    "/devices/\(deviceId):executeCommand"
+    "/devices/\(deviceID):executeCommand"
   }
 }

@@ -4,11 +4,11 @@ import SmartDeviceManagement
 import SwiftUI
 
 struct AppDependency {
-  var projectId: String {
+  var projectID: String {
     ""
   }
 
-  var nestCamId: String {
+  var nestCamID: String {
     ""
   }
 

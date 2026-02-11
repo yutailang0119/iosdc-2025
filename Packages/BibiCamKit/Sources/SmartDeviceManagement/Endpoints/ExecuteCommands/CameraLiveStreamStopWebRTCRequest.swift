@@ -1,31 +1,31 @@
 import Foundation
 
 package struct CameraLiveStreamStopWebRTCRequest: ExecuteCommandRequest {
-  package let projectId: String
-  package let deviceId: String
-  private let mediaSessionId: String
+  package let projectID: String
+  package let deviceID: String
+  private let mediaSessionID: String
 
   package init(
-    projectId: String,
-    deviceId: String,
-    mediaSessionId: String
+    projectID: String,
+    deviceID: String,
+    mediaSessionID: String
   ) {
-    self.projectId = projectId
-    self.deviceId = deviceId
-    self.mediaSessionId = mediaSessionId
+    self.projectID = projectID
+    self.deviceID = deviceID
+    self.mediaSessionID = mediaSessionID
   }
 
   package var payload: CommandPayload<Params> {
     CommandPayload(
       command: "sdm.devices.commands.CameraLiveStream.StopWebRtcStream",
-      params: Params(mediaSessionId: mediaSessionId)
+      params: Params(mediaSessionID: mediaSessionID)
     )
   }
 }
 
 extension CameraLiveStreamStopWebRTCRequest {
   package struct Params: Encodable, Sendable {
-    package let mediaSessionId: String
+    package let mediaSessionID: String
   }
 }
 

@@ -66,7 +66,7 @@ extension WebRTCScreen {
   @Observable
   final class ViewState {
     struct Connection {
-      let mediaSessionId: String
+      let mediaSessionID: String
       let peerConnection: RTCPeerConnection
       let videoTrack: RTCVideoTrack
       let scheduler: LiveStreamExtendScheduler
@@ -120,8 +120,8 @@ extension WebRTCScreen {
         let offer = try await peerConnection.offer(for: constraints)
         try await peerConnection.setLocalDescription(offer)
         let request = CameraLiveStreamGenerateWebRTCRequest(
-          projectId: dependency.projectId,
-          deviceId: dependency.nestCamId,
+          projectID: dependency.projectID,
+          deviceID: dependency.nestCamID,
           offerSdp: offer.sdp
         )
         let response = try await client.request(for: request)
@@ -140,13 +140,13 @@ extension WebRTCScreen {
         }
         let scheduler = LiveStreamExtendScheduler(
           dependency: dependency,
-          deviceID: dependency.nestCamId,
-          mediaSessionID: response.results.mediaSessionId,
+          deviceID: dependency.nestCamID,
+          mediaSessionID: response.results.mediaSessionID,
           expiresAt: response.results.expiresAt
         )
         phase = .loaded(
           Connection(
-            mediaSessionId: response.results.mediaSessionId,
+            mediaSessionID: response.results.mediaSessionID,
             peerConnection: peerConnection,
             videoTrack: videoTrack,
             scheduler: scheduler
@@ -173,9 +173,9 @@ extension WebRTCScreen {
       }
       connection.peerConnection.close()
       let request = CameraLiveStreamStopWebRTCRequest(
-        projectId: dependency.projectId,
-        deviceId: dependency.nestCamId,
-        mediaSessionId: connection.mediaSessionId
+        projectID: dependency.projectID,
+        deviceID: dependency.nestCamID,
+        mediaSessionID: connection.mediaSessionID
       )
       _ = try? await dependency.smartDeviceManagement?.request(for: request)
       self.phase = .empty
@@ -201,9 +201,9 @@ extension WebRTCScreen.ViewState {
           return nil
         }
         let request = CameraLiveStreamExtendWebRTCRequest(
-          projectId: dependency.projectId,
-          deviceId: deviceID,
-          mediaSessionId: mediaSessionID
+          projectID: dependency.projectID,
+          deviceID: deviceID,
+          mediaSessionID: mediaSessionID
         )
         let response = try await client.request(for: request)
         return response.results.expiresAt?.addingTimeInterval(-60)
