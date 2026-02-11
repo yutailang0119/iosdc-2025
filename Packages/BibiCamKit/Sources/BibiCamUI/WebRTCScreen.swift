@@ -69,6 +69,7 @@ extension WebRTCScreen {
       let mediaSessionId: String
       let peerConnection: RTCPeerConnection
       let videoTrack: RTCVideoTrack
+      let scheduler: LiveStreamExtendScheduler
     }
 
     private let dependency: AppDependency
@@ -137,11 +138,18 @@ extension WebRTCScreen {
           phase = .empty
           return
         }
+        let scheduler = LiveStreamExtendScheduler(
+          dependency: dependency,
+          deviceID: dependency.nestCamId,
+          mediaSessionID: response.results.mediaSessionId,
+          expiresAt: response.results.expiresAt
+        )
         phase = .loaded(
           Connection(
             mediaSessionId: response.results.mediaSessionId,
             peerConnection: peerConnection,
-            videoTrack: videoTrack
+            videoTrack: videoTrack,
+            scheduler: scheduler
           )
         )
       } catch {
@@ -171,6 +179,39 @@ extension WebRTCScreen {
       )
       _ = try? await dependency.smartDeviceManagement?.request(for: request)
       self.phase = .empty
+    }
+  }
+}
+
+extension WebRTCScreen.ViewState {
+  @MainActor
+  final class LiveStreamExtendScheduler {
+    private let worker: ScheduleWorker
+
+    init(
+      dependency: AppDependency,
+      deviceID: String,
+      mediaSessionID: String,
+      expiresAt: Date?,
+    ) {
+      worker = ScheduleWorker(
+        date: expiresAt?.addingTimeInterval(-60)
+      ) {
+        guard let client = await dependency.smartDeviceManagement else {
+          return nil
+        }
+        let request = CameraLiveStreamExtendWebRTCRequest(
+          projectId: dependency.projectId,
+          deviceId: deviceID,
+          mediaSessionId: mediaSessionID
+        )
+        let response = try await client.request(for: request)
+        return response.results.expiresAt?.addingTimeInterval(-60)
+      }
+    }
+
+    func cancel() async {
+      await worker.cancel()
     }
   }
 }
