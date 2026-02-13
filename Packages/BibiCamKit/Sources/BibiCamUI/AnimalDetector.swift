@@ -3,11 +3,11 @@ import CoreVideo
 import WebRTC
 
 final class AnimalDetector: NSObject, RTCVideoRenderer {
-  let stream: AsyncStream<[VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]>
-  private let continuation: AsyncStream<[VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]>.Continuation
+  let stream: AsyncStream<[[VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]]>
+  private let continuation: AsyncStream<[[VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]]>.Continuation
 
   override init() {
-    (self.stream, self.continuation) = AsyncStream<[VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]>
+    (self.stream, self.continuation) = AsyncStream<[[VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]]>
       .makeStream()
   }
 
@@ -19,11 +19,10 @@ final class AnimalDetector: NSObject, RTCVideoRenderer {
     }
 
     let request = VNDetectAnimalBodyPoseRequest { result, error in
-      guard let results = result.results as? [VNAnimalBodyPoseObservation],
-        let parts = try? results.first?.recognizedPoints(.all)
-      else {
+      guard let results = result.results as? [VNAnimalBodyPoseObservation] else {
         return
       }
+      let parts = results.compactMap { try? $0.recognizedPoints(.all) }
       self.continuation.yield(parts)
     }
 

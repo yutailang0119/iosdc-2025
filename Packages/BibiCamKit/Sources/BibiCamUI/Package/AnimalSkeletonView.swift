@@ -2,13 +2,13 @@ import SwiftUI
 import Vision
 
 package struct AnimalSkeletonView: View {
-  var animalBodyParts: [VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]
+  var animalBodyParts: [[VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]]
   var size: CGSize
   var color: Color?
   var isDotsEnabled: Bool
 
   package init(
-    animalBodyParts: [VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint],
+    animalBodyParts: [[VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]],
     size: CGSize,
     color: Color? = nil,
     isDotsEnabled: Bool = false
@@ -20,28 +20,48 @@ package struct AnimalSkeletonView: View {
   }
 
   package var body: some View {
-    Group {
-      if animalBodyParts.isEmpty == false {
+    ZStack {
+      ForEach(animalBodyParts, id: \.self) {
+        SkeletonView(
+          parts: $0,
+          size: size,
+          color: color,
+          isDotsEnabled: isDotsEnabled
+        )
+      }
+    }
+  }
+}
+
+private extension AnimalSkeletonView {
+  struct SkeletonView: View {
+    var parts: [VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]
+    var size: CGSize
+    var color: Color?
+    var isDotsEnabled: Bool
+
+    var body: some View {
+      if !parts.isEmpty {
         ZStack {
           ZStack {
             // left head
-            if let nose = animalBodyParts[.nose] {
-              if let leftEye = animalBodyParts[.leftEye] {
+            if let nose = parts[.nose] {
+              if let leftEye = parts[.leftEye] {
                 Line(points: [nose.location, leftEye.location], size: size)
                   .stroke(lineWidth: 5.0)
                   .fill(color ?? Color.orange)
               }
             }
-            if let leftEye = animalBodyParts[.leftEye] {
-              if let leftEarBottom = animalBodyParts[.leftEarBottom] {
+            if let leftEye = parts[.leftEye] {
+              if let leftEarBottom = parts[.leftEarBottom] {
                 Line(points: [leftEye.location, leftEarBottom.location], size: size)
                   .stroke(lineWidth: 5.0)
                   .fill(color ?? Color.orange)
               }
             }
-            if let leftEarBottom = animalBodyParts[.leftEarBottom] {
-              if let leftEarMiddle = animalBodyParts[.leftEarMiddle] {
-                if let leftEarTop = animalBodyParts[.leftEarTop] {
+            if let leftEarBottom = parts[.leftEarBottom] {
+              if let leftEarMiddle = parts[.leftEarMiddle] {
+                if let leftEarTop = parts[.leftEarTop] {
                   Line(
                     points: [
                       leftEarBottom.location, leftEarMiddle.location,
@@ -55,23 +75,23 @@ package struct AnimalSkeletonView: View {
               }
             }
             // right head
-            if let nose = animalBodyParts[.nose] {
-              if let rightEye = animalBodyParts[.rightEye] {
+            if let nose = parts[.nose] {
+              if let rightEye = parts[.rightEye] {
                 Line(points: [nose.location, rightEye.location], size: size)
                   .stroke(lineWidth: 5.0)
                   .fill(color ?? Color.orange)
               }
             }
-            if let rightEye = animalBodyParts[.rightEye] {
-              if let rightEarBottom = animalBodyParts[.rightEarBottom] {
+            if let rightEye = parts[.rightEye] {
+              if let rightEarBottom = parts[.rightEarBottom] {
                 Line(points: [rightEye.location, rightEarBottom.location], size: size)
                   .stroke(lineWidth: 5.0)
                   .fill(color ?? Color.orange)
               }
             }
-            if let rightEarBottom = animalBodyParts[.rightEarBottom] {
-              if let rightEarMiddle = animalBodyParts[.rightEarMiddle] {
-                if let rightEarTop = animalBodyParts[.rightEarTop] {
+            if let rightEarBottom = parts[.rightEarBottom] {
+              if let rightEarMiddle = parts[.rightEarMiddle] {
+                if let rightEarTop = parts[.rightEarTop] {
                   Line(
                     points: [
                       rightEarBottom.location, rightEarMiddle.location,
@@ -85,16 +105,16 @@ package struct AnimalSkeletonView: View {
               }
             }
             // trunk - The nose to the neck.
-            if let nose = animalBodyParts[.nose] {
-              if let neck = animalBodyParts[.neck] {
+            if let nose = parts[.nose] {
+              if let neck = parts[.neck] {
                 Line(points: [nose.location, neck.location], size: size)
                   .stroke(lineWidth: 5.0)
                   .fill(color ?? Color.yellow)
               }
             }
             // tail - The neck to the bottom tail.
-            if let neck = animalBodyParts[.neck] {
-              if let tailBottom = animalBodyParts[.tailBottom] {
+            if let neck = parts[.neck] {
+              if let tailBottom = parts[.tailBottom] {
                 Line(
                   points: [
                     neck.location,
@@ -109,16 +129,16 @@ package struct AnimalSkeletonView: View {
           }
           ZStack {
             // left forelegs
-            if let neck = animalBodyParts[.neck] {
-              if let leftFrontElbow = animalBodyParts[.leftFrontElbow] {
+            if let neck = parts[.neck] {
+              if let leftFrontElbow = parts[.leftFrontElbow] {
                 Line(points: [neck.location, leftFrontElbow.location], size: size)
                   .stroke(lineWidth: 5.0)
                   .fill(color ?? Color.purple)
               }
             }
-            if let leftFrontElbow = animalBodyParts[.leftFrontElbow] {
-              if let leftFrontKnee = animalBodyParts[.leftFrontKnee] {
-                if let leftFrontPaw = animalBodyParts[.leftFrontPaw] {
+            if let leftFrontElbow = parts[.leftFrontElbow] {
+              if let leftFrontKnee = parts[.leftFrontKnee] {
+                if let leftFrontPaw = parts[.leftFrontPaw] {
                   Line(points: [leftFrontElbow.location, leftFrontKnee.location, leftFrontPaw.location], size: size)
                     .stroke(lineWidth: 5.0)
                     .fill(color ?? Color.purple)
@@ -126,16 +146,16 @@ package struct AnimalSkeletonView: View {
               }
             }
             // right forelegs
-            if let neck = animalBodyParts[.neck] {
-              if let rightFrontElbow = animalBodyParts[.rightFrontElbow] {
+            if let neck = parts[.neck] {
+              if let rightFrontElbow = parts[.rightFrontElbow] {
                 Line(points: [neck.location, rightFrontElbow.location], size: size)
                   .stroke(lineWidth: 5.0)
                   .fill(color ?? Color.purple)
               }
             }
-            if let rightFrontElbow = animalBodyParts[.rightFrontElbow] {
-              if let rightFrontKnee = animalBodyParts[.rightFrontKnee] {
-                if let rightFrontPaw = animalBodyParts[.rightFrontPaw] {
+            if let rightFrontElbow = parts[.rightFrontElbow] {
+              if let rightFrontKnee = parts[.rightFrontKnee] {
+                if let rightFrontPaw = parts[.rightFrontPaw] {
                   Line(points: [rightFrontElbow.location, rightFrontKnee.location, rightFrontPaw.location], size: size)
                     .stroke(lineWidth: 5.0)
                     .fill(color ?? Color.purple)
@@ -143,16 +163,16 @@ package struct AnimalSkeletonView: View {
               }
             }
             // left hindlegs
-            if let tailBottom = animalBodyParts[.tailBottom] {
-              if let leftBackElbow = animalBodyParts[.leftBackElbow] {
+            if let tailBottom = parts[.tailBottom] {
+              if let leftBackElbow = parts[.leftBackElbow] {
                 Line(points: [tailBottom.location, leftBackElbow.location], size: size)
                   .stroke(lineWidth: 5.0)
                   .fill(color ?? Color.blue)
               }
             }
-            if let leftBackElbow = animalBodyParts[.leftBackElbow] {
-              if let leftBackKnee = animalBodyParts[.leftBackKnee] {
-                if let leftBackPaw = animalBodyParts[.leftBackPaw] {
+            if let leftBackElbow = parts[.leftBackElbow] {
+              if let leftBackKnee = parts[.leftBackKnee] {
+                if let leftBackPaw = parts[.leftBackPaw] {
                   Line(points: [leftBackElbow.location, leftBackKnee.location, leftBackPaw.location], size: size)
                     .stroke(lineWidth: 5.0)
                     .fill(color ?? Color.blue)
@@ -160,16 +180,16 @@ package struct AnimalSkeletonView: View {
               }
             }
             // right hindlegs
-            if let tailBottom = animalBodyParts[.tailBottom] {
-              if let rightBackElbow = animalBodyParts[.rightBackElbow] {
+            if let tailBottom = parts[.tailBottom] {
+              if let rightBackElbow = parts[.rightBackElbow] {
                 Line(points: [tailBottom.location, rightBackElbow.location], size: size)
                   .stroke(lineWidth: 5.0)
                   .fill(color ?? Color.blue)
               }
             }
-            if let rightBackElbow = animalBodyParts[.rightBackElbow] {
-              if let rightBackKnee = animalBodyParts[.rightBackKnee] {
-                if let rightBackPaw = animalBodyParts[.rightBackPaw] {
+            if let rightBackElbow = parts[.rightBackElbow] {
+              if let rightBackKnee = parts[.rightBackKnee] {
+                if let rightBackPaw = parts[.rightBackPaw] {
                   Line(points: [rightBackElbow.location, rightBackKnee.location, rightBackPaw.location], size: size)
                     .stroke(lineWidth: 5.0)
                     .fill(color ?? Color.blue)
@@ -178,10 +198,10 @@ package struct AnimalSkeletonView: View {
             }
           }
           ZStack {
-            // taols.
-            if let tailBottom = animalBodyParts[.tailBottom] {
-              if let tailMiddle = animalBodyParts[.tailMiddle] {
-                if let tailTop = animalBodyParts[.tailTop] {
+            // tails.
+            if let tailBottom = parts[.tailBottom] {
+              if let tailMiddle = parts[.tailMiddle] {
+                if let tailTop = parts[.tailTop] {
                   Line(points: [tailBottom.location, tailMiddle.location, tailTop.location], size: size)
                     .stroke(lineWidth: 5.0)
                     .fill(color ?? Color.orange)
@@ -191,7 +211,7 @@ package struct AnimalSkeletonView: View {
           }
         }
         if isDotsEnabled {
-          ForEach(animalBodyParts.map(\.value.location), id: \.self) { point in
+          ForEach(parts.map(\.value.location), id: \.self) { point in
             Dot(point: point, size: size)
               .fill(color ?? Color.accentColor)
           }

@@ -77,7 +77,7 @@ extension WebRTCScreen {
 
     private(set) var phase: ScreenPhase<Connection, Error> = .loading
     let detector = AnimalDetector()
-    var parts: [VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint] = [:]
+    var parts: [[VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]] = []
 
     init(
       dependency: AppDependency,

@@ -16,7 +16,7 @@ struct PoseImage: View {
     NSSize(width: image.size.width / image.size.height * 810, height: 810)
   }
 
-  @State private var parts: [VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint] = [:]
+  @State private var parts: [[VNAnimalBodyPoseObservation.JointName: VNRecognizedPoint]] = []
 
   init(image: NSImage, isSkeletonEnabled: Bool) {
     self.image = image
@@ -38,10 +38,8 @@ struct PoseImage: View {
       let request = VNDetectAnimalBodyPoseRequest()
       let handler = VNImageRequestHandler(cgImage: image.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
       try? handler.perform([request])
-      guard let parts = try? request.results?.first?.recognizedPoints(.all) else {
-        return
-      }
-      self.parts = parts
+      let parts = request.results?.compactMap { try? $0.recognizedPoints(.all) }
+      self.parts = parts ?? []
     }
   }
 }
